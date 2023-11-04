@@ -1,6 +1,6 @@
 'use client';
 
-import React, { ReactNode, CSSProperties } from 'react';
+import React, { ReactNode, CSSProperties, useState } from 'react';
 import { Box } from '../box';
 import { AppshellContext } from './context';
 import { defaultHeaderHeight, defaultNavbarWidth } from './constant';
@@ -21,11 +21,17 @@ const Appshell = ({
   headerHeight,
   navbarWidth,
 }: AppshellProps) => {
+  const [navWidth, setNavWidth] = useState(
+    () => navbarWidth ?? defaultNavbarWidth
+  );
+
   return (
     <AppshellContext.Provider
       value={{
         headerHeight: headerHeight ?? defaultHeaderHeight,
-        navbarWidth: navbarWidth ?? defaultNavbarWidth,
+        navbarWidth: navWidth,
+        initialNavbarWidth: navbarWidth ?? defaultNavbarWidth,
+        setNavbarWidth: (navbarWidth) => setNavWidth(navbarWidth),
       }}
     >
       <Box className={cn('appshell-root relative w-full h-screen', className)}>
