@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import {
   ChevronsLeftIcon,
   ChevronsRightIcon,
@@ -32,19 +32,15 @@ export const Navbar = () => {
   const [isnavbarMinimized, setIsNavbarMinimized] = useState(false);
   const { setNavbarWidth, initialNavbarWidth } = useAppshellContext();
 
-  useEffect(() => {
-    setNavbarWidth({
-      width: isnavbarMinimized ? '4rem' : initialNavbarWidth.width,
-    });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isnavbarMinimized]);
-
   return (
     <Box className={`${isnavbarMinimized ? 'px-0' : 'px-4'}`}>
       <Box className='flex justify-end'>
         <Toggle
           pressed={isnavbarMinimized}
           onClick={() => {
+            setNavbarWidth({
+              width: isnavbarMinimized ? initialNavbarWidth.width : '4rem',
+            });
             setIsNavbarMinimized((prevState) => !prevState);
           }}
         >
