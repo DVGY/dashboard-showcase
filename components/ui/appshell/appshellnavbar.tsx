@@ -23,7 +23,8 @@ export const AppshellNavbar = ({
     <Box
       as='nav'
       className={cn(
-        `absolute w-[var(--appshell-navbar-width)] top-[var(--appshell-header-height)] h-[calc(100vh-var(--appshell-header-height))] pt-4 border-solid border-r border-b-gray-300`,
+        `absolute w-[var(--appshell-navbar-width)] top-[var(--appshell-header-height)] h-[calc(100vh-var(--appshell-header-height))] pt-4 border-solid border-r border-b-gray-300 transition-all duration-100  
+                ease-out`,
         className
       )}
       style={

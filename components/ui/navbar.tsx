@@ -33,7 +33,7 @@ export const Navbar = () => {
   const { setNavbarWidth, initialNavbarWidth } = useAppshellContext();
 
   return (
-    <Box className={`${isnavbarMinimized ? 'px-0' : 'px-4'}`}>
+    <Box className={`${isnavbarMinimized ? 'px-0' : 'px-4'} `}>
       <Box className='flex justify-end'>
         <Toggle
           pressed={isnavbarMinimized}
