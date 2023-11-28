@@ -17,7 +17,7 @@ export interface AppshellProps {
   className?: string;
   headerHeight: Pick<CSSProperties, 'height'>;
   navbarWidth: Pick<CSSProperties, 'width'>;
-  navbarMinimizedWidth: Pick<CSSProperties, 'width'>;
+  navbarMinimizedWidth?: Pick<CSSProperties, 'width'>;
 }
 
 const Appshell = ({
