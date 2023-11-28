@@ -66,7 +66,7 @@ export const Header = () => {
           <DropdownMenuTrigger className='p-2 md:px-4 md:py-px-2'>
             <BellDot className='h-6 md:h-8 lg:h-10 w-6 md:w-8 lg:w-10' />
           </DropdownMenuTrigger>
-          <DropdownMenuContent className='w-[70vw] md:w-[40vw]'>
+          <DropdownMenuContent className='w-[70vw] md:w-[40vw] lg:w-[25vw]'>
             <DropdownMenuLabel>Notifications</DropdownMenuLabel>
             <DropdownMenuSeparator />
             <DropdownMenuGroup>
