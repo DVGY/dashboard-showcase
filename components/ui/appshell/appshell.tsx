@@ -25,6 +25,8 @@ const Appshell = ({
     () => navbarWidth ?? defaultNavbarWidth
   );
 
+  const [isnavbarMinimized, setIsNavbarMinimized] = useState(false);
+
   return (
     <AppshellContext.Provider
       value={{
@@ -32,6 +34,8 @@ const Appshell = ({
         navbarWidth: navWidth,
         initialNavbarWidth: navbarWidth ?? defaultNavbarWidth,
         setNavbarWidth: (navbarWidth) => setNavWidth(navbarWidth),
+        setIsNavbarMinimized: (value) => setIsNavbarMinimized(value),
+        isnavbarMinimized,
       }}
     >
       <Box className={cn('appshell-root relative w-full h-screen', className)}>

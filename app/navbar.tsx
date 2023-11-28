@@ -1,24 +1,16 @@
 'use client';
 
-import React, { useState } from 'react';
-import {
-  ChevronsLeftIcon,
-  ChevronsRightIcon,
-  GanttChartSquareIcon,
-  UserCircle2Icon,
-} from 'lucide-react';
-import { Toggle } from '@/components/ui/toggle';
+import { GanttChartSquareIcon, UserCircle2Icon } from 'lucide-react';
 
-import { Box } from './box';
 import {
   Accordion,
+  AccordionContent,
   AccordionItem,
   AccordionTrigger,
-  AccordionContent,
-} from './accordion';
-import { StyledLink } from './styledlink';
-import { useAppshellContext } from './appshell/context';
-import { Button } from './button';
+} from '@/components/ui/accordion';
+import { useAppshellContext } from '@/components/ui/appshell/context';
+import { Box } from '@/components/ui/box';
+import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -26,27 +18,14 @@ import {
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from './dropdown-menu';
+} from '@/components/ui/dropdown-menu';
+import { StyledLink } from '@/components/ui/styledlink';
 
 export const Navbar = () => {
-  const [isnavbarMinimized, setIsNavbarMinimized] = useState(false);
-  const { setNavbarWidth, initialNavbarWidth } = useAppshellContext();
+  const { isnavbarMinimized } = useAppshellContext();
 
   return (
-    <Box className={`${isnavbarMinimized ? 'px-0' : 'px-4'} `}>
-      <Box className='flex justify-end'>
-        <Toggle
-          pressed={isnavbarMinimized}
-          onClick={() => {
-            setNavbarWidth({
-              width: isnavbarMinimized ? initialNavbarWidth.width : '4rem',
-            });
-            setIsNavbarMinimized((prevState) => !prevState);
-          }}
-        >
-          {isnavbarMinimized ? <ChevronsRightIcon /> : <ChevronsLeftIcon />}
-        </Toggle>
-      </Box>
+    <Box className={`${isnavbarMinimized ? 'px-0' : 'px-4'}`}>
       {isnavbarMinimized ? (
         <Box className='flex flex-col justify-center pt-2'>
           <DropdownMenu>

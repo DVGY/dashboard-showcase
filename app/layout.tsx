@@ -6,8 +6,8 @@ import { AppshellHeader } from '@/components/ui/appshell/appshellheader';
 import { AppshellNavbar } from '@/components/ui/appshell/appshellnavbar';
 import { AppshellFooter } from '@/components/ui/appshell/appshellfooter';
 import { AppshellMain } from '@/components/ui/appshell/appshellmain';
-import { Header } from '@/components/ui/header';
-import { Navbar } from '@/components/ui/navbar';
+import { Header } from '@/app/header';
+import { Navbar } from '@/app/navbar';
 
 const inter = Inter({ subsets: ['latin'] });
 

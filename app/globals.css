@@ -80,3 +80,13 @@
     @apply bg-background text-foreground;
   }
 }
+
+@layer utilities {
+  .p-inherit {
+    padding: inherit;
+  }
+
+  .p-unset {
+    padding: unset;
+  }
+}
