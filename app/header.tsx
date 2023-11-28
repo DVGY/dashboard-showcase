@@ -23,12 +23,24 @@ import {
 } from '@/components/ui/dropdown-menu';
 
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { useAppshellContext } from '@/components/ui/appshell/context';
+import { useMediaQuery } from '@/hooks/useMediaQuery';
 
 export const Header = () => {
+  const { setIsNavbarMinimized } = useAppshellContext();
+  const isMobile = useMediaQuery('(max-width: 475px)');
+
   return (
     <Box className='flex items-center justify-between h-full'>
       <Box className='company-logo pl-2 md:pl-4 flex items-center gap-2'>
-        <Avatar className='h-6 md:h-10 w-6 md:w-10 '>
+        <Avatar
+          className='h-6 md:h-10 w-6 md:w-10'
+          onClick={() => {
+            if (isMobile) {
+              setIsNavbarMinimized((prevVal) => !prevVal);
+            }
+          }}
+        >
           <AvatarImage src={barchart.src} alt='@shadcn' />
           <AvatarFallback>IN</AvatarFallback>
         </Avatar>
