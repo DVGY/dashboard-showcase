@@ -71,39 +71,40 @@ export const Header = () => {
             <DropdownMenuSeparator />
             <DropdownMenuGroup>
               <DropdownMenuItem>
-                <Box className='notification-messages '>
-                  <Box className='flex gap-2 p-1'>
-                    <Avatar className='h-10 w-10 '>
-                      <AvatarImage
-                        src='https://bit.ly/code-beast'
-                        alt='user-code'
-                      />
-                      <AvatarFallback>CB</AvatarFallback>
-                    </Avatar>
-                    <Box className='flex flex-col gap-2'>
-                      <p className=''>
-                        <strong>Code Beast</strong> invited you to join Elevator
-                        Softwares
-                      </p>
-                      <p className=''>10 minutes ago</p>
-                    </Box>
+                <Box className='flex gap-2 p-1 cursor-pointer'>
+                  <Avatar className='h-10 w-10 '>
+                    <AvatarImage
+                      src='https://bit.ly/code-beast'
+                      alt='user-code'
+                    />
+                    <AvatarFallback>CB</AvatarFallback>
+                  </Avatar>
+                  <Box className='flex flex-col gap-2'>
+                    <p className=''>
+                      <strong>Code Beast</strong> invited you to join Elevator
+                      Softwares
+                    </p>
+                    <p className=''>10 minutes ago</p>
                   </Box>
-                  <DropdownMenuSeparator />
-                  <Box className='flex gap-2 p-1'>
-                    <Avatar className='h-10 w-10 '>
-                      <AvatarImage
-                        src='https://bit.ly/ryan-florence'
-                        alt='user-code'
-                      />
-                      <AvatarFallback>SA</AvatarFallback>
-                    </Avatar>
-                    <Box className='flex flex-col gap-2'>
-                      <p className=''>
-                        <strong>Steve Arms</strong> invited you to join
-                        Checklist CSG
-                      </p>
-                      <p className=''>30 minutes ago</p>
-                    </Box>
+                </Box>
+              </DropdownMenuItem>
+              <DropdownMenuSeparator />
+
+              <DropdownMenuItem>
+                <Box className='flex gap-2 p-1 cursor-pointer'>
+                  <Avatar className='h-10 w-10 '>
+                    <AvatarImage
+                      src='https://bit.ly/ryan-florence'
+                      alt='user-code'
+                    />
+                    <AvatarFallback>SA</AvatarFallback>
+                  </Avatar>
+                  <Box className='flex flex-col gap-2'>
+                    <p className=''>
+                      <strong>Steve Arms</strong> invited you to join Checklist
+                      CSG
+                    </p>
+                    <p className=''>30 minutes ago</p>
                   </Box>
                 </Box>
               </DropdownMenuItem>
@@ -133,20 +134,25 @@ export const Header = () => {
           <DropdownMenuContent>
             <DropdownMenuGroup>
               <DropdownMenuItem>
-                <Box className='user-settings flex flex-col gap-3 justify-start'>
-                  <Box className='text-md flex gap-2 justify-center items-center self-start'>
-                    <User /> Profile
-                  </Box>
-                  <Box className='text-md flex gap-2 justify-center items-center self-start'>
-                    <SettingsIcon /> Account Setting
-                  </Box>
-                  <Box className='text-md flex gap-2 justify-center items-center self-start'>
-                    <ActivityIcon /> Activity Log
-                  </Box>
-                  <DropdownMenuSeparator />
-                  <Box className='text-md flex gap-2 justify-center items-center self-start'>
-                    <LogOutIcon /> Logout
-                  </Box>
+                <Box className='text-md flex gap-2 justify-center items-center self-start'>
+                  <User /> Profile
+                </Box>
+              </DropdownMenuItem>
+
+              <DropdownMenuItem>
+                <Box className='text-md flex gap-2 justify-center items-center self-start'>
+                  <SettingsIcon /> Account Setting
+                </Box>
+              </DropdownMenuItem>
+              <DropdownMenuItem>
+                <Box className='text-md flex gap-2 justify-center items-center self-start'>
+                  <ActivityIcon /> Activity Log
+                </Box>
+              </DropdownMenuItem>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem>
+                <Box className='text-md flex gap-2 justify-center items-center self-start'>
+                  <LogOutIcon /> Logout
                 </Box>
               </DropdownMenuItem>
             </DropdownMenuGroup>
