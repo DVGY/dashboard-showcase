@@ -3,7 +3,11 @@
 import React, { ReactNode, CSSProperties, useState } from 'react';
 import { Box } from '../box';
 import { AppshellContext } from './context';
-import { defaultHeaderHeight, defaultNavbarWidth } from './constant';
+import {
+  defaultHeaderHeight,
+  defaultNavbarMinimizedWidth,
+  defaultNavbarWidth,
+} from './constant';
 import { cn } from '@/lib/utils';
 
 export interface AppshellProps {
@@ -13,6 +17,7 @@ export interface AppshellProps {
   className?: string;
   headerHeight: Pick<CSSProperties, 'height'>;
   navbarWidth: Pick<CSSProperties, 'width'>;
+  navbarMinimizedWidth?: Pick<CSSProperties, 'width'>;
 }
 
 const Appshell = ({
@@ -20,7 +25,9 @@ const Appshell = ({
   className,
   headerHeight,
   navbarWidth,
+  navbarMinimizedWidth = defaultNavbarMinimizedWidth,
 }: AppshellProps) => {
+  const [isnavbarMinimized, setIsNavbarMinimized] = useState(true);
   const [navWidth, setNavWidth] = useState(
     () => navbarWidth ?? defaultNavbarWidth
   );
@@ -32,6 +39,9 @@ const Appshell = ({
         navbarWidth: navWidth,
         initialNavbarWidth: navbarWidth ?? defaultNavbarWidth,
         setNavbarWidth: (navbarWidth) => setNavWidth(navbarWidth),
+        setIsNavbarMinimized: (value) => setIsNavbarMinimized(value),
+        navbarMinimizedWidth,
+        isnavbarMinimized,
       }}
     >
       <Box className={cn('appshell-root relative w-full h-screen', className)}>

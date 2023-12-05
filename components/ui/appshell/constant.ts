@@ -5,3 +5,7 @@ export const defaultHeaderHeight: Pick<React.CSSProperties, 'height'> = {
 export const defaultNavbarWidth: Pick<React.CSSProperties, 'width'> = {
   width: '10rem',
 };
+
+export const defaultNavbarMinimizedWidth: Pick<React.CSSProperties, 'width'> = {
+  width: '4rem',
+};
