@@ -4,7 +4,7 @@ import { Box } from '@/components/ui/box';
 export default function Page() {
   return (
     <Box className='dashboard-container'>
-      <Box className='welcome-usr-msg'></Box>
+      <Box className='welcome-usr-msg'>Welcome to Dashboard page</Box>
     </Box>
   );
 }
