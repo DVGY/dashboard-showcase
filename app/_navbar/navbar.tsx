@@ -24,8 +24,6 @@ import { StyledLink } from '@/components/ui/styledlink';
 export const Navbar = () => {
   const { isnavbarMinimized } = useAppshellContext();
 
-  console.log(isnavbarMinimized);
-
   return (
     <Box className={`${isnavbarMinimized ? 'px-0' : 'px-4'}`}>
       {isnavbarMinimized ? (

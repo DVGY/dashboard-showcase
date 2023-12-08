@@ -27,6 +27,7 @@ export default function RootLayout({
         <Appshell
           headerHeight={{ height: '4.5rem' }}
           navbarWidth={{ width: '15rem' }}
+          navbarMinimizedWidth={{ width: '4rem' }}
         >
           <AppshellHeader>
             <Header />
@@ -34,7 +35,7 @@ export default function RootLayout({
           <AppshellNavbar>
             <Navbar />
           </AppshellNavbar>
-          <AppshellMain> {children} </AppshellMain>
+          <AppshellMain className='h-full'> {children} </AppshellMain>
           <AppshellFooter>Footer</AppshellFooter>
         </Appshell>
       </body>

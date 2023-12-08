@@ -1,10 +1,37 @@
 import { Box } from '@/components/ui/box';
+import { DashboardResponse } from './types';
+import { TaskChart } from './_component/TaskChart';
+import { MyTasks } from './_component/MyTasks';
+import { MyProjects } from './_component/MyProjects';
 
 // `app/dashboard/page.tsx` is the UI for the `/dashboard` URL
-export default function Page() {
+export default async function Page() {
+  const dashboardData = await getDashboardOverview();
+
   return (
-    <Box className='dashboard-container'>
-      <Box className='welcome-usr-msg'>Welcome to Dashboard page</Box>
+    <Box className='dashboard-container py-6 px-8'>
+      <Box className='flex flex-col gap-4 '>
+        <Box className='welcome-usr-msg'>
+          <small className='text-xl font-semibold mb-1'>
+            Hello, Gaurav Yadav!
+          </small>
+          <br />
+          <p className='text-slate-500 mt-1'>You have 4 tasks on hand</p>
+        </Box>
+
+        <TaskChart taskOverview={dashboardData.taskOverview} />
+        <MyTasks />
+        <MyProjects />
+      </Box>
     </Box>
   );
 }
+
+export const getDashboardOverview = async () => {
+  const res = await fetch('http://localhost:4000/dashboard', {
+    next: { revalidate: 10 },
+  });
+  const dashboard = await res.json();
+
+  return dashboard as DashboardResponse;
+};

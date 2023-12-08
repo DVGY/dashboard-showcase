@@ -12,7 +12,8 @@ interface IAppshellMainProps {
 }
 
 export const AppshellMain = ({ children, className }: IAppshellMainProps) => {
-  const { navbarWidth } = useAppshellContext();
+  const { navbarWidth, isnavbarMinimized, navbarMinimizedWidth } =
+    useAppshellContext();
   const isMobile = useMediaQuery('(max-width: 475px)');
 
   return (
@@ -21,7 +22,11 @@ export const AppshellMain = ({ children, className }: IAppshellMainProps) => {
       className={cn('appshell-main ml-[--appshell-navbar-width]', className)}
       style={
         {
-          '--appshell-navbar-width': isMobile ? '0px' : navbarWidth.width,
+          '--appshell-navbar-width': isMobile
+            ? '0px'
+            : isnavbarMinimized
+            ? navbarMinimizedWidth.width
+            : navbarWidth.width,
         } as React.CSSProperties
       }
     >
