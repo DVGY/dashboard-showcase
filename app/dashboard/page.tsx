@@ -27,7 +27,7 @@ export default async function Page() {
   );
 }
 
-export const getDashboardOverview = async () => {
+const getDashboardOverview = async () => {
   const res = await fetch('http://localhost:4000/dashboard', {
     next: { revalidate: 10 },
   });
