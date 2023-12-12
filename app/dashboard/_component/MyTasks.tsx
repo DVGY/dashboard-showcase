@@ -13,6 +13,7 @@ import {
 import { Badge } from '@/components/ui/badge';
 import { Priority, Tasks } from '../types';
 import { UserAvatars } from './UserAvatars';
+import { baseApiURL } from '@/config/envs';
 
 type TPriorityCssClassConfig = {
   // eslint-disable-next-line no-unused-vars
@@ -99,7 +100,7 @@ export const MyTasks = async () => {
 };
 
 export const getTasks = async () => {
-  const res = await fetch('http://localhost:4000/tasks', {
+  const res = await fetch(`${baseApiURL}/tasks`, {
     next: { revalidate: 10 },
   });
   const tasks = await res.json();

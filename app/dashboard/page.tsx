@@ -3,6 +3,7 @@ import { DashboardResponse } from './types';
 import { TaskChart } from './_component/TaskChart';
 import { MyTasks } from './_component/MyTasks';
 import { MyProjects } from './_component/MyProjects';
+import { baseApiURL } from '@/config/envs';
 
 // `app/dashboard/page.tsx` is the UI for the `/dashboard` URL
 export default async function Page() {
@@ -28,7 +29,7 @@ export default async function Page() {
 }
 
 const getDashboardOverview = async () => {
-  const res = await fetch('http://localhost:4000/dashboard', {
+  const res = await fetch(`${baseApiURL}/dashboard`, {
     next: { revalidate: 10 },
   });
   const dashboard = await res.json();

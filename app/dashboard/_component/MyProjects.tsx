@@ -14,6 +14,7 @@ import { Projects } from '../types';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
 import { UserAvatars } from './UserAvatars';
+import { baseApiURL } from '@/config/envs';
 
 export const MyProjects = async () => {
   const projects = await getProjects();
@@ -87,7 +88,7 @@ export const MyProjects = async () => {
 };
 
 const getProjects = async () => {
-  const res = await fetch('http://localhost:4000/projects', {
+  const res = await fetch(`${baseApiURL}/projects`, {
     next: { revalidate: 10 },
   });
   const projects = await res.json();
