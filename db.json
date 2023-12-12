@@ -9,7 +9,7 @@
       },
       {
         "id": 2,
-        "datetime": "2024-01-03T010:00:00Z",
+        "datetime": "2024-01-03T10:00:00Z",
         "ongoing": 22,
         "finished": 7
       },
@@ -18,7 +18,304 @@
         "datetime": "2024-01-04T06:00:00Z",
         "ongoing": 10,
         "finished": 10
+      },
+      {
+        "id": 4,
+        "datetime": "2024-01-09T13:00:00Z",
+        "ongoing": 11,
+        "finished": 12
+      },
+      {
+        "id": 5,
+        "datetime": "2024-01-15T08:00:00Z",
+        "ongoing": 30,
+        "finished": 20
+      },
+      {
+        "id": 6,
+        "datetime": "2024-01-20T10:00:00Z",
+        "ongoing": 6,
+        "finished": 20
+      },
+      {
+        "id": 7,
+        "datetime": "2024-01-22T18:15:33Z",
+        "ongoing": 6,
+        "finished": 20
       }
     ]
-  }
+  },
+  "projects": [
+    {
+      "id": "4a83a208-84dc-4810-80b9-3df946fa67cc",
+      "name": "Boyer, Hammes and Flatley",
+      "description": "Etiam faucibus cursus urna.",
+      "checklist_total": 69,
+      "checklist_complete": 35,
+      "users": [
+        {
+          "id": "ba4f74a9-af93-4e6a-a998-7739c366f15a",
+          "avatar": "https://i.pravatar.cc/150?img=32",
+          "name": "Shweta"
+        },
+        {
+          "id": "0cab5b1f-08fe-40f4-9396-51152e4f2386",
+          "avatar": "https://i.pravatar.cc/150?img=68",
+          "name": "Ramesh"
+        }
+      ]
+    },
+    {
+      "id": "520a67c3-9182-49e5-9643-ca5560228095",
+      "name": "Williamson, Gleason and Upton",
+      "description": "Mauris sit amet eros.",
+      "checklist_total": 80,
+      "checklist_complete": 13,
+      "users": [
+        {
+          "id": "cdbe0aed-6c29-4d76-a8f0-29df62636f7f",
+          "avatar": "https://i.pravatar.cc/150?img=7",
+
+          "name": "Jaggu"
+        },
+        {
+          "id": "055be246-cae1-4c65-ba07-1dfa5ee31e81",
+          "avatar": "https://i.pravatar.cc/150?img=52",
+          "name": "Kamlesh"
+        }
+      ]
+    },
+    {
+      "id": "d31d8f28-f830-4137-bd7b-b11e493be2b1",
+      "name": "Pagac-Tremblay",
+      "description": "Donec ut mauris eget massa tempor convallis.",
+      "checklist_total": 67,
+      "checklist_complete": 48,
+      "users": [
+        {
+          "id": "ba4f74a9-af93-4e6a-a998-7739c366f15a",
+          "avatar": "https://i.pravatar.cc/150?img=32",
+          "name": "Shweta"
+        },
+        {
+          "id": "0cab5b1f-08fe-40f4-9396-51152e4f2386",
+          "avatar": "https://i.pravatar.cc/150?img=68",
+          "name": "Ramesh"
+        }
+      ]
+    },
+    {
+      "id": "59aba094-e958-4206-bee1-75533ac6c692",
+      "name": "Farrell and Sons",
+      "description": "Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros.",
+      "checklist_total": 60,
+      "checklist_complete": 25,
+      "users": [
+        {
+          "id": "cdbe0aed-6c29-4d76-a8f0-29df62636f7f",
+          "avatar": "https://i.pravatar.cc/150?img=7",
+
+          "name": "Jaggu"
+        }
+      ]
+    },
+    {
+      "id": "37c0f353-cd4a-4d69-bc97-cfe574bff195",
+      "name": "Beer Inc",
+      "description": "Etiam pretium iaculis justo.",
+      "checklist_total": 76,
+      "checklist_complete": 7,
+      "users": [
+        {
+          "id": "040d038f-d623-49ce-86f4-589b45d9ddb7",
+          "avatar": "https://i.pravatar.cc/150?img=11",
+
+          "name": "Tushar"
+        },
+        {
+          "id": "a9dba99d-e735-48d2-aad2-a81e6da8ec5a",
+          "avatar": "https://i.pravatar.cc/150?img=12",
+          "name": "Raghu"
+        }
+      ]
+    },
+    {
+      "id": "a25509fc-af01-4ec5-8c52-3d9829f863b9",
+      "name": "Welch, Welch and Prohaska",
+      "description": "In hac habitasse platea dictumst.",
+      "checklist_total": 63,
+      "checklist_complete": 23,
+      "users": [
+        {
+          "id": "ba4f74a9-af93-4e6a-a998-7739c366f15a",
+          "avatar": "https://i.pravatar.cc/150?img=32",
+          "name": "Shweta"
+        },
+        {
+          "id": "0cab5b1f-08fe-40f4-9396-51152e4f2386",
+          "avatar": "https://i.pravatar.cc/150?img=68",
+          "name": "Ramesh"
+        }
+      ]
+    },
+    {
+      "id": "4b540878-7cd5-479e-9768-6de0ea494e5f",
+      "name": "Morar, Kertzmann and Koch",
+      "description": "Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis.",
+      "checklist_total": 54,
+      "checklist_complete": 38,
+      "users": [
+        {
+          "id": "cdbe0aed-6c29-4d76-a8f0-29df62636f7f",
+          "avatar": "https://i.pravatar.cc/150?img=7",
+
+          "name": "Jaggu"
+        }
+      ]
+    },
+    {
+      "id": "4ab734c6-7bdd-4c48-bcfd-93bc210c516c",
+      "name": "Carter, Bechtelar and Schumm",
+      "description": "Aenean auctor gravida sem.",
+      "checklist_total": 80,
+      "checklist_complete": 47,
+      "users": [
+        {
+          "id": "cdbe0aed-6c29-4d76-a8f0-29df62636f7f",
+          "avatar": "https://i.pravatar.cc/150?img=7",
+
+          "name": "Jaggu"
+        },
+        {
+          "id": "055be246-cae1-4c65-ba07-1dfa5ee31e81",
+          "avatar": "https://i.pravatar.cc/150?img=52",
+          "name": "Kamlesh"
+        }
+      ]
+    },
+    {
+      "id": "b581ce63-5648-4613-9c8c-ace1312d038d",
+      "name": "VonRueden-Heaney",
+      "description": "Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla.",
+      "checklist_total": 87,
+      "checklist_complete": 40,
+      "users": [
+        {
+          "id": "040d038f-d623-49ce-86f4-589b45d9ddb7",
+          "avatar": "https://i.pravatar.cc/150?img=11",
+
+          "name": "Tushar"
+        },
+        {
+          "id": "a9dba99d-e735-48d2-aad2-a81e6da8ec5a",
+          "avatar": "https://i.pravatar.cc/150?img=12",
+          "name": "Raghu"
+        }
+      ]
+    },
+    {
+      "id": "f47997d9-4563-4b67-9ee1-5863ec57bbc9",
+      "name": "Treutel, McGlynn and Dietrich",
+      "description": "Nunc rhoncus dui vel sem.",
+      "checklist_total": 52,
+      "checklist_complete": 37,
+      "users": [
+        {
+          "id": "ba4f74a9-af93-4e6a-a998-7739c366f15a",
+          "avatar": "https://i.pravatar.cc/150?img=32",
+          "name": "Shweta"
+        },
+        {
+          "id": "0cab5b1f-08fe-40f4-9396-51152e4f2386",
+          "avatar": "https://i.pravatar.cc/150?img=68",
+          "name": "Ramesh"
+        }
+      ]
+    }
+  ],
+
+  "tasks": [
+    {
+      "id": "45f9fb7b-944c-47f6-bce5-b8a752bbb13e",
+      "subject": "The app crashes suddenly whenever user upload bulk images",
+      "priority": "High",
+      "assignees": [
+        {
+          "id": "ba4f74a9-af93-4e6a-a998-7739c366f15a",
+          "avatar": "https://i.pravatar.cc/150?img=32",
+          "name": "Shweta"
+        },
+        {
+          "id": "0cab5b1f-08fe-40f4-9396-51152e4f2386",
+          "avatar": "https://i.pravatar.cc/150?img=68",
+          "name": "Ramesh"
+        }
+      ]
+    },
+    {
+      "id": "73ecb0bb-618e-45d0-b8f1-3c8d504b96d3",
+      "subject": "Help section is not visible",
+      "priority": "Medium",
+      "assignees": [
+        {
+          "id": "a9dba99d-e735-48d2-aad2-a81e6da8ec5a",
+          "avatar": "https://i.pravatar.cc/150?img=12",
+          "name": "Raghu"
+        }
+      ]
+    },
+    {
+      "id": "db170467-49ea-4edf-8779-7dfefd344978",
+      "subject": "Time log page takes a lot of time",
+      "priority": "Low",
+      "assignees": [
+        {
+          "id": "040d038f-d623-49ce-86f4-589b45d9ddb7",
+          "avatar": "https://i.pravatar.cc/150?img=11",
+
+          "name": "Tushar"
+        },
+        {
+          "id": "a9dba99d-e735-48d2-aad2-a81e6da8ec5a",
+          "avatar": "https://i.pravatar.cc/150?img=12",
+          "name": "Raghu"
+        }
+      ]
+    },
+    {
+      "id": "30ad723c-e744-4830-9ac5-5f80cf4d3111",
+      "subject": "Unable to zoom user profile",
+      "priority": "Low",
+      "assignees": [
+        {
+          "id": "cdbe0aed-6c29-4d76-a8f0-29df62636f7f",
+          "avatar": "https://i.pravatar.cc/150?img=7",
+
+          "name": "Jaggu"
+        },
+        {
+          "id": "055be246-cae1-4c65-ba07-1dfa5ee31e81",
+          "avatar": "https://i.pravatar.cc/150?img=52",
+          "name": "Kamlesh"
+        }
+      ]
+    },
+    {
+      "id": "6d994fb6-1235-46c5-9cac-159ed572dc13",
+      "subject": "Mobile OTP is not working properly",
+      "priority": "Critical",
+      "assignees": [
+        {
+          "id": "a6657101-7388-44ca-88be-20eb2876c978",
+          "avatar": "https://i.pravatar.cc/150?img=14",
+          "name": "Jitendra"
+        },
+        {
+          "id": "0b1b6757-d40a-40f4-8bcb-9806378779c5",
+          "avatar": "https://i.pravatar.cc/150?img=57",
+          "name": "Nitin"
+        }
+      ]
+    }
+  ]
 }
