@@ -36,9 +36,9 @@ export const TaskChart = ({ taskOverview }: TaskChartProps) => {
     <Card>
       <CardHeader>
         <Box className='flex flex-col gap-6'>
-          <Box className='flex justify-between '>
+          <Box className='flex flex-col md:flex-row gap-6 md:justify-between '>
             <CardTitle className='text-xl'>Task Overview</CardTitle>
-            <Box className='flex'>
+            <Box className='flex max-sm:[&>*]:basis-1/3'>
               <Button className='rounded-none	' variant={'outline'}>
                 Monthly
               </Button>
@@ -54,7 +54,9 @@ export const TaskChart = ({ taskOverview }: TaskChartProps) => {
             <Box>
               <small className='text-xl font-semibold mb-1'>{total}</small>
               <br />
-              <p className='text-slate-500 mt-1'>Total Tasks</p>
+              <p className='text-slate-500 mt-1 text-sm md:text-base'>
+                Total Tasks
+              </p>
             </Box>
 
             <Box className='flex gap-'>
@@ -69,7 +71,9 @@ export const TaskChart = ({ taskOverview }: TaskChartProps) => {
                     {ongoing}
                   </small>
                   <br />
-                  <p className='text-slate-500 mt-1'>Ongoing</p>
+                  <p className='text-slate-500 mt-1 text-sm md:text-base'>
+                    Ongoing
+                  </p>
                 </Box>
               </Box>
               <Box className='flex gap-2'>
@@ -83,17 +87,36 @@ export const TaskChart = ({ taskOverview }: TaskChartProps) => {
                     {finished}
                   </small>
                   <br />
-                  <p className='text-slate-500 mt-1'>Finished</p>
+                  <p className='text-slate-500 mt-1 text-sm md:text-base'>
+                    Finished
+                  </p>
                 </Box>
               </Box>
             </Box>
           </Box>
         </Box>
       </CardHeader>
-      <CardContent className='min-h-[300px]'>
+      <CardContent className='min-h-[300px] xs:max-md:px-2'>
         <ApexChart
           type='bar'
           options={{
+            responsive: [
+              {
+                breakpoint: 768,
+                options: {
+                  plotOptions: {
+                    bar: {
+                      columnWidth: '80%',
+                    },
+                  },
+                  xaxis: {
+                    labels: {
+                      show: false,
+                    },
+                  },
+                },
+              },
+            ],
             plotOptions: {
               bar: {
                 columnWidth: '50%',

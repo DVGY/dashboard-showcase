@@ -40,14 +40,14 @@ export const MyProjects = async () => {
           );
 
           return (
-            <Card className='flex' key={project.id}>
-              <CardHeader className='basis-1/4'>
+            <Card className='flex flex-col md:flex-row' key={project.id}>
+              <CardHeader className='basis-1/4 '>
                 <CardTitle className=' text-md'>{project.name}</CardTitle>
                 <p className='text-slate-500 mt-1'>{project.description}</p>
               </CardHeader>
-              <CardContent className='flex-auto p-0 self-center'>
-                <Box className='flex items-center gap-4'>
-                  <Box className='flex basis-2/4 items-center gap-4'>
+              <CardContent className='flex-auto xs:max-md:w-full px-6 md:p-0 self-start md:self-center'>
+                <Box className='flex flex-col  md:flex-row md:items-center gap-4'>
+                  <Box className='flex flex-col md:basis-2/4 md:flex-row  items-start md:items-center gap-4'>
                     <Badge className='flex gap-1 py-1' variant={'outline'}>
                       <ClipboardCheckIcon color='rgb(148 163 184)' />
                       <p className='text-slate-500'>
@@ -56,7 +56,7 @@ export const MyProjects = async () => {
                           project.checklist_total}
                       </p>
                     </Badge>
-                    <Box className='flex items-center basis-3/5 gap-2'>
+                    <Box className='flex items-center xs:max-md:w-full  md:basis-3/5 gap-2'>
                       <Progress
                         className='h-2'
                         indicatorProps={{
@@ -76,7 +76,7 @@ export const MyProjects = async () => {
                   <UserAvatars users={project.users} />
                 </Box>
               </CardContent>
-              <CardFooter>
+              <CardFooter className='justify-end'>
                 <MoreHorizontal className='cursor-pointer' />
               </CardFooter>
             </Card>
