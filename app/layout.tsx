@@ -35,7 +35,7 @@ export default function RootLayout({
           <AppshellNavbar>
             <Navbar />
           </AppshellNavbar>
-          <AppshellMain className='h-full'> {children} </AppshellMain>
+          <AppshellMain className='h-max-content'> {children} </AppshellMain>
           <AppshellFooter>Footer</AppshellFooter>
         </Appshell>
       </body>

@@ -14,18 +14,19 @@ export const AppshellFooter = ({
   className,
   children,
 }: IAppshellFooterProps) => {
-  const { headerHeight } = useAppshellContext();
+  const { headerHeight, mainContentHeight } = useAppshellContext();
 
   return (
     <Box
       as='footer'
       className={cn(
-        'appshell-footer mt-[calc(100vh-var(--appshell-header-height))]',
+        'appshell-footer mt-[calc(100vh-var(--appshell-header-height)+var(--appshell-main-height))]',
         className
       )}
       style={
         {
           '--appshell-header-height': headerHeight.height,
+          '--appshell-main-height': mainContentHeight,
         } as React.CSSProperties
       }
     >
