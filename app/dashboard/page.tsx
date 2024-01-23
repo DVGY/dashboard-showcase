@@ -4,6 +4,7 @@ import { TaskChart } from './_component/TaskChart';
 import { MyTasks } from './_component/MyTasks';
 import { MyProjects } from './_component/MyProjects';
 import { baseApiURL } from '@/config/envs';
+import { CalendarSchedule } from './_component/CalendarSchedule';
 
 // `app/dashboard/page.tsx` is the UI for the `/dashboard` URL
 export default async function Page() {
@@ -22,9 +23,17 @@ export default async function Page() {
           </p>
         </Box>
 
-        <TaskChart taskOverview={dashboardData.taskOverview} />
-        <MyTasks />
-        <MyProjects />
+        <Box className='flex gap-4'>
+          <Box className='flex flex-col flex-auto'>
+            <TaskChart taskOverview={dashboardData.taskOverview} />
+            <MyTasks />
+            <MyProjects />
+          </Box>
+          <Box className='flex flex-col'>
+            <CalendarSchedule />
+            <Box>sdafasdfa</Box>
+          </Box>
+        </Box>
       </Box>
     </Box>
   );
