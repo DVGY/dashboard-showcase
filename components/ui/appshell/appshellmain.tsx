@@ -18,7 +18,7 @@ export const AppshellMain = ({ children, className }: IAppshellMainProps) => {
     navbarMinimizedWidth,
     setMainContentHeight,
   } = useAppshellContext();
-  const isMobile = useMediaQuery('(max-width: 475px)');
+  const isMobile = useMediaQuery('(max-width:1023px)');
   const mainRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {

@@ -1,8 +1,8 @@
 'use client';
 
+import { cn } from '@/lib/utils';
 import React, { ReactNode } from 'react';
 import { Box } from '../box';
-import { cn } from '@/lib/utils';
 import { useAppshellContext } from './context';
 
 interface IAppshellFooterProps {

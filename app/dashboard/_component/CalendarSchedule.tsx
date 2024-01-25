@@ -11,16 +11,16 @@ export const CalendarSchedule = () => {
 
   return (
     <Card>
-      <CardContent className=''>
+      <CardContent>
         <Calendar
           mode='single'
           selected={new Date()}
           //   onSelect={setDate}
-          className=' '
+          classNames={{ month: 'justify-center' }}
         />
         <Separator className='my-4' />
         <h5 className='font-semibold text-lg mb-4 '>Schedule</h5>
-        <Box className='schedule-container flex flex-col gap-4 [&>*]:cursor-pointer justify-center '>
+        <Box className='schedule-container flex flex-col gap-4 [&>*]:cursor-pointer justify-center'>
           <Box className='flex items-center gap-3 hover:bg-slate-100 p-2'>
             <Box className='p-2 bg-indigo-100  rounded-md'>
               <VideoIcon color='rgba(79,70,229,1)' fill='rgba(79,70,229,1)' />
