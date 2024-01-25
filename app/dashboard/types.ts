@@ -44,4 +44,14 @@ export type Project = {
   users: Users;
 };
 
+export type Activity = {
+  id: string;
+  timestamp: string;
+  title: string;
+  description: string;
+  user: User;
+};
+
+export type Activities = Activity[];
+
 export type Projects = Project[];
