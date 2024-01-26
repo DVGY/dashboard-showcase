@@ -8,6 +8,7 @@ import { AppshellFooter } from '@/components/ui/appshell/appshellfooter';
 import { AppshellMain } from '@/components/ui/appshell/appshellmain';
 import { Header } from '@/app/_header/header';
 import { Navbar } from '@/app/_navbar/navbar';
+import { Footer } from './_footer/footer';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -27,6 +28,7 @@ export default function RootLayout({
         <Appshell
           headerHeight={{ height: '4.5rem' }}
           navbarWidth={{ width: '15rem' }}
+          navbarMinimizedWidth={{ width: '4rem' }}
         >
           <AppshellHeader>
             <Header />
@@ -34,8 +36,10 @@ export default function RootLayout({
           <AppshellNavbar>
             <Navbar />
           </AppshellNavbar>
-          <AppshellMain> {children} </AppshellMain>
-          <AppshellFooter>Footer</AppshellFooter>
+          <AppshellMain className='h-max-content'> {children} </AppshellMain>
+          <AppshellFooter>
+            <Footer />
+          </AppshellFooter>
         </Appshell>
       </body>
     </html>

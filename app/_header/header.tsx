@@ -28,7 +28,7 @@ import { useMediaQuery } from '@/hooks/useMediaQuery';
 
 export const Header = () => {
   const { setIsNavbarMinimized } = useAppshellContext();
-  const isMobile = useMediaQuery('(max-width: 475px)');
+  const isMobile = useMediaQuery('(max-width: 1023px)');
 
   return (
     <Box className='flex items-center justify-between h-full'>

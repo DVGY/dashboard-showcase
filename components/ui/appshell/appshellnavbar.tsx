@@ -28,7 +28,7 @@ export const AppshellNavbar = ({
     isnavbarMinimized,
   } = useAppshellContext();
 
-  const isMobile = useMediaQuery('(max-width: 475px)');
+  const isMobile = useMediaQuery('(max-width: 1023px)');
 
   return (
     <>
@@ -36,7 +36,7 @@ export const AppshellNavbar = ({
         as='nav'
         className={cn(
           `absolute w-[var(--appshell-navbar-width)] top-[var(--appshell-header-height)] h-[calc(100vh-var(--appshell-header-height))] pt-4 border-solid border-r border-b-gray-300 transition-all duration-100  
-                ease-out hidden md:block`,
+                ease-out hidden lg:block`,
           className
         )}
         style={
@@ -65,7 +65,7 @@ export const AppshellNavbar = ({
         </Box>
         {children}
       </Box>
-      <Box className='md:hidden'>
+      <Box className='lg:hidden'>
         <Sheet
           open={isMobile && !isnavbarMinimized}
           onOpenChange={() => setIsNavbarMinimized((prevState) => !prevState)}

@@ -15,6 +15,8 @@ type TAppShellContextValue = {
   navbarMinimizedWidth: Pick<React.CSSProperties, 'width'>;
   setNavbarWidth: Dispatcher<Pick<React.CSSProperties, 'width'>>;
   setIsNavbarMinimized: Dispatcher<boolean>;
+  setMainContentHeight: Dispatcher<number>;
+  mainContentHeight: number;
   isnavbarMinimized: boolean;
 };
 
@@ -24,7 +26,9 @@ export const AppshellContext = createContext<TAppShellContextValue>({
   navbarMinimizedWidth: { width: defaultNavbarMinimizedWidth.width },
   initialNavbarWidth: { width: defaultNavbarWidth.width },
   setNavbarWidth: () => {},
+  setMainContentHeight: () => {},
   setIsNavbarMinimized: () => {},
+  mainContentHeight: 100,
   isnavbarMinimized: false,
 });
 
