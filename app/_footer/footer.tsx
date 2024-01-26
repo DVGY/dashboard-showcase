@@ -1,11 +1,22 @@
 import { Box } from '@/components/ui/box';
 import { LinkIcon } from 'lucide-react';
+import Image from 'next/image';
 import Link from 'next/link';
+
+import companylogo from '@/assets/Nirmaan-logos.jpg';
 
 export const Footer = () => {
   return (
     <footer>
-      <Box className='flex p-4 bg-emerald-100 gap-4'>
+      <Box className='flex p-4 bg-slate-50 gap-4'>
+        <Box>
+          <Image
+            className='rounded-full'
+            height={40}
+            src={companylogo}
+            alt='logo org'
+          />
+        </Box>
         <Box className='flex flex-col gap-1'>
           <Link
             href={
