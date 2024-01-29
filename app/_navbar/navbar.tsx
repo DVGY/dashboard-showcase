@@ -20,7 +20,6 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { StyledLink } from '@/components/ui/styledlink';
-import Link from 'next/link';
 
 export const Navbar = () => {
   const { isnavbarMinimized } = useAppshellContext();

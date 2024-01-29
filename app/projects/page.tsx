@@ -19,8 +19,18 @@ import { ProjectsListView } from './_component/ProjectsListView';
 import Loading from './loading';
 import { Button } from '@/components/ui/button';
 
-const getProjects = async (project_name: string) => {
-  const res = await fetch(`${baseApiURL}/projects?name_like=${project_name}`, {
+const getProjects = async (project_name: string, sortOrder: 'asc' | 'desc') => {
+  const endpoint = new URL(`${baseApiURL}/projects`);
+
+  if (project_name) {
+    endpoint.searchParams.set('name_like', project_name);
+  }
+  if (sortOrder) {
+    endpoint.searchParams.set('_sort', 'name');
+    endpoint.searchParams.set('_order', sortOrder);
+  }
+
+  const res = await fetch(endpoint, {
     next: { revalidate: 10 },
   });
   const projects = await res.json();
@@ -29,11 +39,6 @@ const getProjects = async (project_name: string) => {
 
 export default function Page() {
   const [searchText, setSearchText] = useState('');
-  const { data: projects, isLoading } = useQuery<Projects>({
-    queryKey: ['projects', searchText],
-    queryFn: () => getProjects(searchText),
-  });
-
   const [sort, setSort] = useState<{
     view: 'grid' | 'list';
     alphaSort: 'asc' | 'desc';
@@ -44,6 +49,11 @@ export default function Page() {
 
   const { view, alphaSort } = sort;
 
+  const { data: projects, isLoading } = useQuery<Projects>({
+    queryKey: ['projects', searchText, alphaSort],
+    queryFn: () => getProjects(searchText, alphaSort),
+  });
+
   console.log(view);
 
   if (isLoading) {
@@ -51,7 +61,7 @@ export default function Page() {
   }
 
   return (
-    <Box className='project-container h-screen flex flex-col gap-4 pt-0 pb-3 px-4  md:py-6 md:px-8'>
+    <Box className='project-container min-h-screen h-max-content flex flex-col gap-4 pt-0 pb-3 px-4  md:py-6 md:px-8'>
       <Box className='flex justify-between'>
         <h1 className='font-bold text-2xl '>Projects</h1>
         <Box>
