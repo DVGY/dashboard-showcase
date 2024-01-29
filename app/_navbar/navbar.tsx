@@ -20,6 +20,7 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { StyledLink } from '@/components/ui/styledlink';
+import Link from 'next/link';
 
 export const Navbar = () => {
   const { isnavbarMinimized } = useAppshellContext();
@@ -42,10 +43,10 @@ export const Navbar = () => {
             >
               <DropdownMenuGroup>
                 <DropdownMenuItem>
-                  <StyledLink href={'#'}>Dashboard</StyledLink>
+                  <StyledLink href={'/dashboard'}>Dashboard</StyledLink>
                 </DropdownMenuItem>
                 <DropdownMenuItem>
-                  <StyledLink href={'#'}> Project List</StyledLink>
+                  <StyledLink href={'/projects'}>Project List</StyledLink>
                 </DropdownMenuItem>
                 <DropdownMenuItem>
                   <StyledLink href={'#'}>Scrum Board</StyledLink>
@@ -96,10 +97,10 @@ export const Navbar = () => {
             <AccordionContent>
               <ul className='w-full flex gap-3 flex-col flex-nowrap '>
                 <Box className='h-[40px]'>
-                  <StyledLink href={'#'}>Dashboard</StyledLink>
+                  <StyledLink href={'/dashboard'}>Dashboard</StyledLink>
                 </Box>
                 <Box className='h-[40px]'>
-                  <StyledLink href={'#'}>Project List</StyledLink>
+                  <StyledLink href={'/projects'}>Project List</StyledLink>
                 </Box>
                 <Box className='h-[40px]'>
                   <StyledLink href={'#'}>Scrum Board</StyledLink>
