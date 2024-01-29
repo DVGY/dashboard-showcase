@@ -62,62 +62,60 @@ export default function Page() {
 
   return (
     <Box className='project-container min-h-screen h-max-content flex flex-col gap-4 pt-0 pb-3 px-4  md:py-6 md:px-8'>
-      <Box className='flex justify-between'>
-        <h1 className='font-bold text-2xl '>Projects</h1>
-        <Box>
-          <Box className='flex gap-4 justify-center items-center'>
+      <Box className='flex flex-col lg:flex-row gap-4 justify-between'>
+        <h1 className='font-bold text-2xl'>Projects</h1>
+        <Box className=''>
+          <Box className='flex flex-col md:flex-row gap-2 md:gap-4 justify-center md:justify-between items-center'>
             <Input
               type='text'
               placeholder='Search'
               value={searchText}
               onChange={(e) => setSearchText(e.target.value)}
               autoFocus
-              className=' border-indigo-500 focus-visible:ring-indigo-500'
+              className=' md:max-lg:basis-3/5 border-indigo-500 focus-visible:ring-indigo-500'
             />
-            {sort.view === 'grid' ? (
-              <MenuIcon
-                onClick={() =>
-                  setSort((prevState) => ({
-                    ...prevState,
-                    view: 'list',
-                  }))
-                }
-                size={50}
-              />
-            ) : (
-              <LayoutGridIcon
-                onClick={() =>
-                  setSort((prevState) => ({
-                    ...prevState,
-                    view: 'grid',
-                  }))
-                }
-                size={50}
-              />
-            )}
+            <Box className='hidden md:flex gap-4'>
+              {sort.view === 'grid' ? (
+                <MenuIcon
+                  onClick={() =>
+                    setSort((prevState) => ({
+                      ...prevState,
+                      view: 'list',
+                    }))
+                  }
+                />
+              ) : (
+                <LayoutGridIcon
+                  onClick={() =>
+                    setSort((prevState) => ({
+                      ...prevState,
+                      view: 'grid',
+                    }))
+                  }
+                />
+              )}
 
-            {sort.alphaSort === 'asc' ? (
-              <ArrowUpZAIcon
-                onClick={() =>
-                  setSort((prevState) => ({
-                    ...prevState,
-                    alphaSort: 'desc',
-                  }))
-                }
-                size={50}
-              />
-            ) : (
-              <ArrowDownAZIcon
-                onClick={() =>
-                  setSort((prevState) => ({
-                    ...prevState,
-                    alphaSort: 'asc',
-                  }))
-                }
-                size={50}
-              />
-            )}
-            <Button className='bg-indigo-100 hover:bg-indigo-200 text-indigo-500 font-semibold'>
+              {sort.alphaSort === 'asc' ? (
+                <ArrowUpZAIcon
+                  onClick={() =>
+                    setSort((prevState) => ({
+                      ...prevState,
+                      alphaSort: 'desc',
+                    }))
+                  }
+                />
+              ) : (
+                <ArrowDownAZIcon
+                  onClick={() =>
+                    setSort((prevState) => ({
+                      ...prevState,
+                      alphaSort: 'asc',
+                    }))
+                  }
+                />
+              )}
+            </Box>
+            <Button className='bg-indigo-100 hover:bg-indigo-200 text-indigo-500 font-semibold w-full md:w-min'>
               <PlusCircleIcon />
               &nbsp; New Project
             </Button>

@@ -22,13 +22,13 @@ export const ProjectsListView = ({ projects }: { projects?: Projects }) => {
 
         return (
           <Card className='flex flex-col md:flex-row' key={project.id}>
-            <CardHeader className='basis-1/4 '>
+            <CardHeader className='basis-4/12 lg:basis-1/4 '>
               <CardTitle className=' text-md'>{project.name}</CardTitle>
               <p className='text-slate-500 mt-1'>{project.description}</p>
             </CardHeader>
             <CardContent className='flex-auto xs:max-md:w-full px-6 md:p-0 self-start md:self-center'>
               <Box className='flex flex-col  md:flex-row md:items-center gap-4'>
-                <Box className='flex flex-col md:basis-2/4 md:flex-row  items-start md:items-center gap-4'>
+                <Box className='flex flex-col md:basis-[70%] lg:basis-2/4 md:flex-row  items-start md:items-center gap-4'>
                   <Badge className='flex gap-1 py-1' variant={'outline'}>
                     <ClipboardCheckIcon color='rgb(148 163 184)' />
                     <p className='text-slate-500'>

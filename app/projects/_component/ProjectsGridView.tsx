@@ -8,7 +8,11 @@ import { ClipboardCheckIcon, MoreHorizontal } from 'lucide-react';
 
 export const ProjectsGridView = ({ projects }: { projects?: Projects }) => {
   return (
-    <Box className={'grid grid-cols-5 gap-4'}>
+    <Box
+      className={
+        'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 gap-4'
+      }
+    >
       {projects?.map((project) => {
         const percentageComplete = Math.round(
           (project.checklist_complete / project.checklist_total) * 100
