@@ -10,19 +10,31 @@ import {
   CardTitle,
 } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
-import { ClipboardCheckIcon, MoreHorizontal } from 'lucide-react';
+import { ClipboardCheckIcon, MoreHorizontal, Trash2Icon } from 'lucide-react';
+import { useDeleteProject } from '../_hooks/useDeleteProject';
+import Loader from '@/components/ui/loader';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
 
 export const ProjectsListView = ({ projects }: { projects?: Projects }) => {
+  const { mutate, isPending } = useDeleteProject();
+
   return (
     <Box className='grid grid-cols-1 gap-4'>
       {projects?.map((project) => {
-        const percentageComplete = Math.round(
+        let percentageComplete = Math.round(
           (project.checklist_complete / project.checklist_total) * 100
         );
+        percentageComplete = isNaN(percentageComplete) ? 0 : percentageComplete;
 
         return (
           <Card className='flex flex-col md:flex-row' key={project.id}>
             <CardHeader className='basis-4/12 lg:basis-1/4 '>
+              {isPending ? <Loader /> : null}
               <CardTitle className=' text-md'>{project.name}</CardTitle>
               <p className='text-slate-500 mt-1'>{project.description}</p>
             </CardHeader>
@@ -58,7 +70,22 @@ export const ProjectsListView = ({ projects }: { projects?: Projects }) => {
               </Box>
             </CardContent>
             <CardFooter className='justify-end'>
-              <MoreHorizontal className='cursor-pointer' />
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <MoreHorizontal className='cursor-pointer' />
+                </DropdownMenuTrigger>
+                <DropdownMenuContent className='w-56'>
+                  <DropdownMenuItem
+                    onClick={() => {
+                      mutate(project.id);
+                    }}
+                    className=' cursor-pointer'
+                  >
+                    <Trash2Icon />
+                    &nbsp; Delete
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
             </CardFooter>
           </Card>
         );

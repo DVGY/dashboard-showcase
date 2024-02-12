@@ -7,19 +7,22 @@ import {
   ArrowUpZAIcon,
   LayoutGridIcon,
   MenuIcon,
-  PlusCircleIcon,
 } from 'lucide-react';
 
 import { Input } from '@/components/ui/input';
 import { baseApiURL } from '@/config/envs';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Projects } from '../dashboard/types';
 import { ProjectsGridView } from './_component/ProjectsGridView';
 import { ProjectsListView } from './_component/ProjectsListView';
 import Loading from './loading';
-import { Button } from '@/components/ui/button';
+import { CreateProject } from './_component/CreateProject';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 
-const getProjects = async (project_name: string, sortOrder: 'asc' | 'desc') => {
+type SearchText = string | null;
+type SortOrder = 'asc' | 'desc' | null;
+
+const getProjects = async (project_name: SearchText, sortOrder: SortOrder) => {
   const endpoint = new URL(`${baseApiURL}/projects`);
 
   if (project_name) {
@@ -38,23 +41,48 @@ const getProjects = async (project_name: string, sortOrder: 'asc' | 'desc') => {
 };
 
 export default function Page() {
-  const [searchText, setSearchText] = useState('');
+  const [searchText, setSearchText] = useState<SearchText>(null);
+  const searchParams = useSearchParams();
+  const pathname = usePathname();
+  const { replace } = useRouter();
   const [sort, setSort] = useState<{
     view: 'grid' | 'list';
-    alphaSort: 'asc' | 'desc';
+    alphaSort: 'asc' | 'desc' | null;
   }>({
     view: 'grid',
-    alphaSort: 'asc',
+    alphaSort: null,
   });
 
   const { view, alphaSort } = sort;
 
   const { data: projects, isLoading } = useQuery<Projects>({
-    queryKey: ['projects', searchText, alphaSort],
+    queryKey: ['projects', { searchText, alphaSort }],
     queryFn: () => getProjects(searchText, alphaSort),
   });
 
-  console.log(view);
+  useEffect(() => {
+    const params = new URLSearchParams(searchParams);
+    params.set('name_like', searchText as string);
+    replace(`${pathname}?${params.toString()}`);
+  }, [searchText, pathname, replace, searchParams]);
+
+  useEffect(() => {
+    const params = new URLSearchParams(searchParams);
+    params.set('_sort', 'name');
+    params.set('_order', alphaSort as string);
+    replace(`${pathname}?${params.toString()}`);
+  }, [alphaSort, pathname, searchParams, replace]);
+
+  const handleSearch = (value: SearchText) => {
+    setSearchText(value);
+  };
+
+  const handleSort = (value: SortOrder) => {
+    setSort((prevState) => ({
+      ...prevState,
+      alphaSort: value,
+    }));
+  };
 
   if (isLoading) {
     return <Loading />;
@@ -69,14 +97,15 @@ export default function Page() {
             <Input
               type='text'
               placeholder='Search'
-              value={searchText}
-              onChange={(e) => setSearchText(e.target.value)}
+              value={searchText || ''}
+              onChange={(e) => handleSearch(e.target.value)}
               autoFocus
               className=' md:max-lg:basis-3/5 border-indigo-500 focus-visible:ring-indigo-500'
             />
             <Box className='hidden md:flex gap-4'>
               {sort.view === 'grid' ? (
                 <MenuIcon
+                  className='cursor-pointer'
                   onClick={() =>
                     setSort((prevState) => ({
                       ...prevState,
@@ -86,6 +115,7 @@ export default function Page() {
                 />
               ) : (
                 <LayoutGridIcon
+                  className='cursor-pointer'
                   onClick={() =>
                     setSort((prevState) => ({
                       ...prevState,
@@ -97,28 +127,17 @@ export default function Page() {
 
               {sort.alphaSort === 'asc' ? (
                 <ArrowUpZAIcon
-                  onClick={() =>
-                    setSort((prevState) => ({
-                      ...prevState,
-                      alphaSort: 'desc',
-                    }))
-                  }
+                  className='cursor-pointer'
+                  onClick={() => handleSort('desc')}
                 />
               ) : (
                 <ArrowDownAZIcon
-                  onClick={() =>
-                    setSort((prevState) => ({
-                      ...prevState,
-                      alphaSort: 'asc',
-                    }))
-                  }
+                  className='cursor-pointer'
+                  onClick={() => handleSort('asc')}
                 />
               )}
             </Box>
-            <Button className='bg-indigo-100 hover:bg-indigo-200 text-indigo-500 font-semibold w-full md:w-min'>
-              <PlusCircleIcon />
-              &nbsp; New Project
-            </Button>
+            <CreateProject />
           </Box>
         </Box>
       </Box>
