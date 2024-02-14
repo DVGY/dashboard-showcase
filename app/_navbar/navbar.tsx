@@ -48,7 +48,7 @@ export const Navbar = () => {
                   <StyledLink href={'/projects'}>Project List</StyledLink>
                 </DropdownMenuItem>
                 <DropdownMenuItem>
-                  <StyledLink href={'#'}>Scrum Board</StyledLink>
+                  <StyledLink href={'/sprints'}>Scrum Board</StyledLink>
                 </DropdownMenuItem>
                 <DropdownMenuItem>
                   <StyledLink href={'#'}>Issue</StyledLink>
@@ -102,7 +102,7 @@ export const Navbar = () => {
                   <StyledLink href={'/projects'}>Project List</StyledLink>
                 </Box>
                 <Box className='h-[40px]'>
-                  <StyledLink href={'#'}>Scrum Board</StyledLink>
+                  <StyledLink href={'/sprints'}>Scrum Board</StyledLink>
                 </Box>
                 <Box className='h-[40px]'>
                   <StyledLink href={'#'}>Issue</StyledLink>
