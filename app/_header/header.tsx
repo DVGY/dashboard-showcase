@@ -5,6 +5,7 @@ import {
   BellDot,
   LanguagesIcon,
   LogOutIcon,
+  MenuIcon,
   SettingsIcon,
   User,
 } from 'lucide-react';
@@ -33,6 +34,15 @@ export const Header = () => {
   return (
     <Box className='flex items-center justify-between h-full'>
       <Box className='company-logo pl-2 md:pl-4 flex items-center gap-2'>
+        <Box className='lg:hidden'>
+          <MenuIcon
+            onClick={() => {
+              if (isMobile) {
+                setIsNavbarMinimized((prevVal) => !prevVal);
+              }
+            }}
+          />
+        </Box>
         <Avatar
           className='h-6 md:h-10 w-6 md:w-10'
           onClick={() => {

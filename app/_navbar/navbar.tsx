@@ -42,13 +42,13 @@ export const Navbar = () => {
             >
               <DropdownMenuGroup>
                 <DropdownMenuItem>
-                  <StyledLink href={'#'}>Dashboard</StyledLink>
+                  <StyledLink href={'/dashboard'}>Dashboard</StyledLink>
                 </DropdownMenuItem>
                 <DropdownMenuItem>
-                  <StyledLink href={'#'}> Project List</StyledLink>
+                  <StyledLink href={'/projects'}>Project List</StyledLink>
                 </DropdownMenuItem>
                 <DropdownMenuItem>
-                  <StyledLink href={'#'}>Scrum Board</StyledLink>
+                  <StyledLink href={'/sprints'}>Scrum Board</StyledLink>
                 </DropdownMenuItem>
                 <DropdownMenuItem>
                   <StyledLink href={'#'}>Issue</StyledLink>
@@ -96,13 +96,13 @@ export const Navbar = () => {
             <AccordionContent>
               <ul className='w-full flex gap-3 flex-col flex-nowrap '>
                 <Box className='h-[40px]'>
-                  <StyledLink href={'#'}>Dashboard</StyledLink>
+                  <StyledLink href={'/dashboard'}>Dashboard</StyledLink>
                 </Box>
                 <Box className='h-[40px]'>
-                  <StyledLink href={'#'}>Project List</StyledLink>
+                  <StyledLink href={'/projects'}>Project List</StyledLink>
                 </Box>
                 <Box className='h-[40px]'>
-                  <StyledLink href={'#'}>Scrum Board</StyledLink>
+                  <StyledLink href={'/sprints'}>Scrum Board</StyledLink>
                 </Box>
                 <Box className='h-[40px]'>
                   <StyledLink href={'#'}>Issue</StyledLink>
