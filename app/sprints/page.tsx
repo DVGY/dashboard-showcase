@@ -1,5 +1,7 @@
-import { Box } from '@/components/ui/box';
+'use client';
+
+import BoardSectionList from './_component/BoardSectionList';
 
 export default function Page() {
-  return <Box>This is good</Box>;
+  return <BoardSectionList />;
 }
