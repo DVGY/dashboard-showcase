@@ -6,13 +6,13 @@ import {
 } from '@dnd-kit/sortable';
 import TaskItem from './TaskItem';
 import SortableTaskItem from './SortableTaskItem';
-import { Task } from '../utils';
+import { SprintItems } from '@/types/resourceResponses';
 import { Box } from '@/components/ui/box';
 
 type BoardSectionProps = {
   id: string;
   title: string;
-  tasks: Task[];
+  tasks: SprintItems;
 };
 
 const BoardSection = ({ id, title, tasks }: BoardSectionProps) => {

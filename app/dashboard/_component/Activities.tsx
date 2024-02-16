@@ -3,7 +3,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Timeline } from '@/components/ui/timeline';
 import { baseApiURL } from '@/config/envs';
-import { Activities } from '../types';
+import { Activities } from '@/types/resourceResponses';
 import { UserAvatars } from './UserAvatars';
 
 interface UserTimeStampProps {

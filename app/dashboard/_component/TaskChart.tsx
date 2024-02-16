@@ -3,7 +3,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import React from 'react';
 import dynamic from 'next/dynamic';
-import { DashboardResponse, TaskOverview } from '../types';
+import { DashboardResponse, TaskOverview } from '@/types/resourceResponses';
 import { Box } from '@/components/ui/box';
 import { Button } from '@/components/ui/button';
 

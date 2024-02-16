@@ -10,7 +10,7 @@ import {
 import React from 'react';
 import { ClipboardCheckIcon, MoreHorizontal } from 'lucide-react';
 
-import { Projects } from '../types';
+import { Projects } from '@/types/resourceResponses';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
 import { UserAvatars } from './UserAvatars';

@@ -12,7 +12,7 @@ import {
 import { Input } from '@/components/ui/input';
 import { baseApiURL } from '@/config/envs';
 import { useEffect, useState } from 'react';
-import { Projects } from '../dashboard/types';
+import { Projects } from '@/types/resourceResponses';
 import { ProjectsGridView } from './_component/ProjectsGridView';
 import { ProjectsListView } from './_component/ProjectsListView';
 import Loading from './loading';

@@ -1,3 +1,29 @@
+export type Status = 'todo' | 'in progress' | 'complete';
+
+export type BoardSections = {
+  [name: string]: SprintItems;
+};
+
+export interface SprintItem {
+  id: string;
+  name: string;
+  description: string;
+  files: any[];
+  status: Status;
+  task_type: string;
+  create_at: Date;
+  complete_at: Date;
+  updated_at: null;
+  priority: string;
+  tags: Tag[];
+  users: User[];
+  comments: any[];
+}
+
+export type SprintItems = SprintItem[];
+
+type Tag = 'Live' | 'Need Help' | 'Rippling';
+
 /* eslint-disable no-unused-vars */
 export type TaskOverview = {
   id: number;

@@ -1,5 +1,5 @@
 import { baseApiURL } from '@/config/envs';
-import { Project } from '../dashboard/types';
+import { Project } from '@/types/resourceResponses';
 
 export const deleteProject = async (id: string) => {
   const endpoint = new URL(`${baseApiURL}/projects/${id}`);

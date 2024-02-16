@@ -1,7 +1,7 @@
 'use client';
 
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { Users } from '../types';
+import { Users } from '@/types/resourceResponses';
 import { Box } from '@/components/ui/box';
 import {
   Tooltip,

@@ -1,14 +1,14 @@
 import { Card, CardContent } from '@/components/ui/card';
-import { Task } from '../utils';
+import { SprintItem } from '@/types/resourceResponses';
 
 type TaskItemProps = {
-  task: Task;
+  task: SprintItem;
 };
 
 const TaskItem = ({ task }: TaskItemProps) => {
   return (
     <Card>
-      <CardContent>{task.title}</CardContent>
+      <CardContent>{task.name}</CardContent>
     </Card>
   );
 };

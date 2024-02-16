@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { deleteProject } from '../utils';
-import { Projects } from '@/app/dashboard/types';
+import { Projects } from '@/types/resourceResponses';
 import { useSearchParams } from 'next/navigation';
 
 export const useDeleteProject = () => {

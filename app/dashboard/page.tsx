@@ -1,5 +1,5 @@
 import { Box } from '@/components/ui/box';
-import { DashboardResponse } from './types';
+import { DashboardResponse } from '@/types/resourceResponses';
 import { TaskChart } from './_component/TaskChart';
 import { MyTasks } from './_component/MyTasks';
 import { MyProjects } from './_component/MyProjects';
