@@ -10,8 +10,15 @@ import {
   TooltipTrigger,
 } from '@/components/ui/tooltip';
 import { TooltipArrow, TooltipPortal } from '@radix-ui/react-tooltip';
+import { cn } from '@/lib/utils';
 
-export const UserAvatars = ({ users }: { users: Users }) => {
+export const UserAvatars = ({
+  users,
+  avatarClassname,
+}: {
+  users: Users;
+  avatarClassname?: string;
+}) => {
   return (
     <Box className='flex [&>*:not(:first-child)]:ml-[-5%]'>
       {users &&
@@ -19,7 +26,7 @@ export const UserAvatars = ({ users }: { users: Users }) => {
           <TooltipProvider key={user.id} delayDuration={0}>
             <Tooltip>
               <TooltipTrigger>
-                <Avatar>
+                <Avatar className={cn(avatarClassname)}>
                   <AvatarImage src={user.avatar} />
                   <AvatarFallback>{user.name}</AvatarFallback>
                 </Avatar>

@@ -31,7 +31,7 @@ const BoardSection = ({ id, title, tasks }: BoardSectionProps) => {
   return (
     <Box className=' bg-slate-100 p-2'>
       <Box className='flex justify-between'>
-        <h1 className='text-lg mb-2'>{title}</h1>
+        <h1 className='text-lg font-semibold mb-2'>{title}</h1>
         <TooltipProvider>
           <Tooltip>
             <TooltipTrigger asChild>

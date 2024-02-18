@@ -5,6 +5,8 @@ export type BoardSections = {
 };
 
 type UserDefinedStatus = string;
+type UserDefinedTaskType = string;
+type TaskType = 'task' | 'feature' | 'bug';
 
 export interface SprintItem {
   id: string;
@@ -12,7 +14,7 @@ export interface SprintItem {
   description: string;
   files: any[];
   status: Status | UserDefinedStatus;
-  task_type: string;
+  task_type: TaskType | UserDefinedTaskType;
   create_at: Date;
   complete_at: Date;
   updated_at: null;
