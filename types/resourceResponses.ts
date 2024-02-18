@@ -4,12 +4,14 @@ export type BoardSections = {
   [name: string]: SprintItems;
 };
 
+type UserDefinedStatus = string;
+
 export interface SprintItem {
   id: string;
   name: string;
   description: string;
   files: any[];
-  status: Status;
+  status: Status | UserDefinedStatus;
   task_type: string;
   create_at: Date;
   complete_at: Date;

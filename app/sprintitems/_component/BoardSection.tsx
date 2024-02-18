@@ -8,6 +8,14 @@ import TaskItem from './TaskItem';
 import SortableTaskItem from './SortableTaskItem';
 import { SprintItems } from '@/types/resourceResponses';
 import { Box } from '@/components/ui/box';
+import { PlusCircleIcon } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { TooltipProvider } from '@radix-ui/react-tooltip';
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from '@/components/ui/tooltip';
 
 type BoardSectionProps = {
   id: string;
@@ -22,7 +30,21 @@ const BoardSection = ({ id, title, tasks }: BoardSectionProps) => {
 
   return (
     <Box className=' bg-slate-100 p-2'>
-      <h1 className='text-lg mb-2'>{title}</h1>
+      <Box className='flex justify-between'>
+        <h1 className='text-lg mb-2'>{title}</h1>
+        <TooltipProvider>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Button variant='ghost'>
+                <PlusCircleIcon />
+              </Button>
+            </TooltipTrigger>
+            <TooltipContent>
+              <p>New Sprint Item</p>
+            </TooltipContent>
+          </Tooltip>
+        </TooltipProvider>
+      </Box>
       <SortableContext
         id={id}
         items={tasks}

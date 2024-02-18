@@ -31,7 +31,7 @@ export const findBoardSectionContainer = (
   const container = Object.keys(boardSections).find((key) =>
     boardSections[key].find((item) => item.id === id)
   );
-  return container;
+  return container as Status;
 };
 
 export const getTasksByStatus = (sprintItems: SprintItems, status: Status) => {

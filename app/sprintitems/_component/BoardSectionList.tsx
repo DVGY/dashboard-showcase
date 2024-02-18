@@ -4,7 +4,10 @@ import { Box } from '@/components/ui/box';
 import { Input } from '@/components/ui/input';
 import Loader from '@/components/ui/loader';
 import { FancyMultiSelect } from '@/components/ui/multiselect';
-import { BoardSections as BoardSectionsType } from '@/types/resourceResponses';
+import {
+  BoardSections as BoardSectionsType,
+  SprintItem,
+} from '@/types/resourceResponses';
 import {
   DndContext,
   DragEndEvent,
@@ -20,7 +23,7 @@ import {
   useSensors,
 } from '@dnd-kit/core';
 import { arrayMove, sortableKeyboardCoordinates } from '@dnd-kit/sortable';
-import { useQuery } from '@tanstack/react-query';
+import { useMutation, useQuery } from '@tanstack/react-query';
 import {
   findBoardSectionContainer,
   getSprints,
@@ -29,8 +32,25 @@ import {
 } from '../utils';
 import BoardSection from './BoardSection';
 import TaskItem from './TaskItem';
+import { PlusCircleIcon, SettingsIcon } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Separator } from '@/components/ui/separator';
+import { baseApiURL } from '@/config/envs';
 
 const Container = Box;
+
+const updateSprintItems = async (data: SprintItem) => {
+  const endpoint = new URL(`${baseApiURL}/sprintitems/${data.id}`);
+
+  const res = await fetch(endpoint, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data),
+  });
+
+  const project = await res.json();
+  return project as SprintItem;
+};
 
 const BoardSectionList = () => {
   const [boardSections, setBoardSections] = useState<BoardSectionsType | null>(
@@ -52,6 +72,10 @@ const BoardSectionList = () => {
       setBoardSections(initialBoardSections);
       return data;
     },
+  });
+
+  const updateSprintItem = useMutation({
+    mutationFn: (data: SprintItem) => updateSprintItems(data),
   });
 
   const handleDragStart = ({ active }: DragStartEvent) => {
@@ -143,6 +167,10 @@ const BoardSectionList = () => {
       (task) => task.id === over?.id
     );
 
+    const updatedSprintItem = {
+      ...boardSections[activeContainer][activeIndex],
+    };
+
     if (activeIndex !== overIndex) {
       setBoardSections((boardSection) => {
         if (!boardSection) {
@@ -161,6 +189,10 @@ const BoardSectionList = () => {
     }
 
     setActiveTaskId(null);
+    updateSprintItem.mutate({
+      ...updatedSprintItem,
+      status: overContainer,
+    });
   };
 
   const dropAnimation: DropAnimation = {
@@ -176,8 +208,14 @@ const BoardSectionList = () => {
   return (
     <Container>
       <Box className='flex gap-6 flex-col mb-4 p-4'>
-        <Box>
+        <Box className='flex justify-between'>
           <h1 className=' text-lg font-semibold'>RND Team Sprint 2</h1>
+          <Box className='flex gap-4 justify-center items-center'>
+            <SettingsIcon />
+            <Button>
+              <PlusCircleIcon /> &nbsp; New Status
+            </Button>
+          </Box>
         </Box>
         <Box className='flex gap-4 '>
           <Input
@@ -223,7 +261,9 @@ const BoardSectionList = () => {
             />
           </Box>
         </Box>
+        <Separator />
       </Box>
+
       <DndContext
         sensors={sensors}
         collisionDetection={closestCorners}
