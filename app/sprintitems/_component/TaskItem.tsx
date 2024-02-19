@@ -11,6 +11,16 @@ type TaskItemProps = {
 
 const TaskItem = ({ task }: TaskItemProps) => {
   const date = new Date(task.create_at);
+  const priorityNumber =
+    task.priority === 'Critical'
+      ? { p: 1, bgColor: 'bg-red-300' }
+      : task.priority === 'High'
+      ? { p: 2, bgColor: 'bg-yellow-300' }
+      : task.priority === 'Medium'
+      ? { p: 3, bgColor: 'bg-blue-300' }
+      : task.priority === 'Low'
+      ? { p: 4, bgColor: 'bg-emerald-300' }
+      : null;
   const task_createdate = `${
     date.getDate() +
     ' ' +
@@ -75,8 +85,16 @@ const TaskItem = ({ task }: TaskItemProps) => {
           </Box>
         </Box>
         <Box className='mb-4'></Box>
-        <Box>
+        <Box className='flex items-center justify-between'>
           <p className='text-slate-400 text-sm'>{task_createdate}</p>
+          <Box className='flex justify-center items-center gap-2'>
+            <span
+              className={`flex justify-center items-center h-5 w-5  rounded-full text-xs text-center ${priorityNumber?.bgColor}`}
+            >
+              {priorityNumber?.p}
+            </span>
+            <p className='text-xs'>{task.priority}</p>
+          </Box>
         </Box>
         <Box className='mb-4'></Box>
         <Box className='flex gap-2'>
