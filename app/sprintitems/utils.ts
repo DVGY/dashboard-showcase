@@ -1,5 +1,10 @@
 import { baseApiURL } from '@/config/envs';
-import { BoardSections, SprintItems, Status } from '@/types/resourceResponses';
+import {
+  BoardSections,
+  SprintItem,
+  SprintItems,
+  Status,
+} from '@/types/resourceResponses';
 
 export const BOARD_SECTIONS = {
   todo: 'todo',
@@ -53,4 +58,28 @@ export const getSprints = async () => {
 
   const sprint = await res.json();
   return sprint as SprintItems;
+};
+
+export const createSprintItem = async (data: Partial<SprintItem>) => {
+  const endpoint = new URL(`${baseApiURL}/sprintitems`);
+  const res = await fetch(endpoint, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data),
+  });
+
+  const sprintItem = await res.json();
+  return sprintItem as SprintItem;
+};
+
+export const updateSprintItem = async (data: Partial<SprintItem>) => {
+  const endpoint = new URL(`${baseApiURL}/sprintitems/${data?.id}`);
+  const res = await fetch(endpoint, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data),
+  });
+
+  const sprintItem = await res.json();
+  return sprintItem as SprintItem;
 };

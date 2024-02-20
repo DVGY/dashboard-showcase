@@ -6,7 +6,7 @@ import {
 } from '@dnd-kit/sortable';
 import TaskItem from './TaskItem';
 import SortableTaskItem from './SortableTaskItem';
-import { SprintItems, Users } from '@/types/resourceResponses';
+import { SprintItem, SprintItems, Tag, Users } from '@/types/resourceResponses';
 import { Box } from '@/components/ui/box';
 import { PlusCircleIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -18,6 +18,7 @@ import {
 } from '@/components/ui/tooltip';
 import {
   Dialog,
+  DialogClose,
   DialogContent,
   DialogFooter,
   DialogHeader,
@@ -38,9 +39,13 @@ import {
 } from '@/components/ui/select';
 import { Textarea } from '@/components/ui/textarea';
 import { FancyMultiSelect } from '@/components/ui/multiselect';
-import { useQuery } from '@tanstack/react-query';
+import { useMutation, useQuery } from '@tanstack/react-query';
 import { baseApiURL } from '@/config/envs';
 import { Avatar, AvatarImage } from '@/components/ui/avatar';
+import { createSprintItem } from '../utils';
+import { queryClient } from '@/app/queryClient';
+import { LoadingSpinner } from '@/components/ui/spinner';
+import { EditSprintItemForm } from './EditSprintItemForm';
 
 type BoardSectionProps = {
   id: string;
@@ -62,12 +67,35 @@ const getUsers = async (user_name?: string) => {
   return projects as Users;
 };
 
+type TEditSprintItemForm = {
+  sprintItem: null | SprintItem;
+  isOpen: boolean;
+};
+
 const BoardSection = ({ id, title, tasks }: BoardSectionProps) => {
   const { setNodeRef } = useDroppable({
     id,
   });
 
+  const [sprintItemFormData, setSprintItemFormData] = useState({
+    name: '',
+    description: '',
+    type: '',
+    priority: '',
+  });
+  const [editSprintItemDialog, setEditSprintItemDialog] =
+    useState<TEditSprintItemForm>({
+      sprintItem: null,
+      isOpen: false,
+    });
   const [searchText] = useState('');
+  const [tags, setTags] = React.useState<
+    {
+      id: string;
+      value: string;
+      label: string | React.ReactNode;
+    }[]
+  >([]);
   const [select, setSelect] = React.useState<
     {
       id: string;
@@ -80,6 +108,34 @@ const BoardSection = ({ id, title, tasks }: BoardSectionProps) => {
     queryKey: ['users', searchText],
     queryFn: () => getUsers(searchText),
   });
+
+  const { mutate, isPending } = useMutation({
+    mutationFn: (sprintItemFormData: Partial<SprintItem>) =>
+      createSprintItem(sprintItemFormData),
+
+    onSuccess: () => {
+      // const searchText = searchParams.get('name_like');
+      // let alphaSort = searchParams.get('_order');
+      // if (alphaSort) {
+      //   alphaSort = null;
+      // }
+      queryClient.invalidateQueries({
+        queryKey: ['sprintitems'],
+      });
+    },
+  });
+
+  const { name, description, priority, type } = sprintItemFormData;
+  const { isOpen, sprintItem } = editSprintItemDialog;
+
+  const handleFormData = (targetName: string, targetValue: unknown) => {
+    setSprintItemFormData((prevData) => ({
+      ...prevData,
+      [targetName]: targetValue,
+    }));
+  };
+
+  console.log(isOpen, sprintItem);
 
   return (
     <Box className=' bg-slate-100 p-2'>
@@ -101,28 +157,37 @@ const BoardSection = ({ id, title, tasks }: BoardSectionProps) => {
           <DialogContent className='sm:max-w-[425px]'>
             <DialogHeader>
               <DialogTitle>Create Sprint Item - {title}</DialogTitle>
-              <DialogDescription>Create new Sprint Item here</DialogDescription>
+              <DialogDescription>
+                Assigned users will recieve an email
+              </DialogDescription>
             </DialogHeader>
             <Box>
               <Label htmlFor='name'>Name</Label>
-              <Input id='name' type='text' />
+              <Input
+                id='name'
+                type='text'
+                name='name'
+                value={name}
+                onChange={(e) => handleFormData(e.target.name, e.target.value)}
+              />
             </Box>
             <Box>
               <Label htmlFor='description'>Description</Label>
               <Textarea
-                // placeholder={projectForm.description}
+                placeholder={'Enter Description'}
                 id='description'
-                // onChange={(e) =>
-                //   setProjectForm((prevVal) => ({
-                //     ...prevVal,
-                //     description: e.target.value,
-                //   }))
-                // }
+                name='description'
+                value={description}
+                onChange={(e) => handleFormData(e.target.name, e.target.value)}
               />
             </Box>
             <Box>
               <Label htmlFor='type'>Type</Label>
-              <Select>
+              <Select
+                name='type'
+                value={type}
+                onValueChange={(value) => handleFormData('type', value)}
+              >
                 <SelectTrigger className='w-[180px]'>
                   <SelectValue placeholder='Select a Type' />
                 </SelectTrigger>
@@ -138,17 +203,20 @@ const BoardSection = ({ id, title, tasks }: BoardSectionProps) => {
             </Box>
             <Box>
               <Label htmlFor='priority'>Priority</Label>
-              <Select>
+              <Select
+                value={priority}
+                onValueChange={(value) => handleFormData('priority', value)}
+              >
                 <SelectTrigger className='w-[180px]'>
                   <SelectValue placeholder='Select a Priority' />
                 </SelectTrigger>
                 <SelectContent>
                   <SelectGroup>
                     <SelectLabel>Priority</SelectLabel>
-                    <SelectItem value='critical'>Critical</SelectItem>
-                    <SelectItem value='high'>High</SelectItem>
-                    <SelectItem value='medium'>Medium</SelectItem>
-                    <SelectItem value='low'>Low</SelectItem>
+                    <SelectItem value='Critical'>Critical</SelectItem>
+                    <SelectItem value='High'>High</SelectItem>
+                    <SelectItem value='Medium'>Medium</SelectItem>
+                    <SelectItem value='Low'>Low</SelectItem>
                   </SelectGroup>
                 </SelectContent>
               </Select>
@@ -174,10 +242,12 @@ const BoardSection = ({ id, title, tasks }: BoardSectionProps) => {
                     label: 'Rippling',
                   },
                 ]}
+                select={tags}
+                onSelect={setTags}
               />
             </Box>
             <Box>
-              <Label htmlFor='users'>Users</Label>
+              <Label htmlFor='users'>Assign To</Label>
               <FancyMultiSelect
                 placeholder='users'
                 options={
@@ -203,7 +273,36 @@ const BoardSection = ({ id, title, tasks }: BoardSectionProps) => {
 
             <div className='grid gap-4 py-4'></div>
             <DialogFooter>
-              <Button type='submit'>Save changes</Button>
+              <DialogClose>
+                <Button
+                  disabled={isPending}
+                  onClick={() => {
+                    mutate({
+                      // @ts-ignore
+                      name,
+                      description,
+                      files: [],
+                      status: id,
+                      task_type: type,
+                      create_at: new Date().toISOString(),
+                      complete_at: null,
+                      updated_at: null,
+                      priority,
+                      tags: tags.map((e) => e.id) as Tag[],
+                      users: select?.map(({ id, name, avatar }) => ({
+                        id,
+                        name,
+                        avatar,
+                      })),
+                      comments: [],
+                    });
+                  }}
+                  type='submit'
+                >
+                  {isPending && <LoadingSpinner />}
+                  Create
+                </Button>
+              </DialogClose>
             </DialogFooter>
           </DialogContent>
         </Dialog>
@@ -215,7 +314,13 @@ const BoardSection = ({ id, title, tasks }: BoardSectionProps) => {
       >
         <Box ref={setNodeRef}>
           {tasks.map((task) => (
-            <Box key={task.id} className='mb-2'>
+            <Box
+              key={task.id}
+              className='mb-2 p-2'
+              onClick={() => {
+                setEditSprintItemDialog({ sprintItem: task, isOpen: true });
+              }}
+            >
               <SortableTaskItem id={task.id}>
                 <TaskItem task={task} />
               </SortableTaskItem>
@@ -223,6 +328,15 @@ const BoardSection = ({ id, title, tasks }: BoardSectionProps) => {
           ))}
         </Box>
       </SortableContext>
+      {isOpen && (
+        <EditSprintItemForm
+          isOpen={isOpen}
+          data={sprintItem}
+          onClose={() =>
+            setEditSprintItemDialog({ sprintItem: null, isOpen: false })
+          }
+        />
+      )}
     </Box>
   );
 };

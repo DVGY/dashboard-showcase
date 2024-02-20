@@ -7,6 +7,7 @@ export type BoardSections = {
 type UserDefinedStatus = string;
 type UserDefinedTaskType = string;
 type TaskType = 'task' | 'feature' | 'bug';
+type DateFm = string;
 
 export interface SprintItem {
   id: string;
@@ -15,9 +16,9 @@ export interface SprintItem {
   files: any[];
   status: Status | UserDefinedStatus;
   task_type: TaskType | UserDefinedTaskType;
-  create_at: Date;
-  complete_at: Date;
-  updated_at: null;
+  create_at: DateFm;
+  complete_at: DateFm | null;
+  updated_at: DateFm | null;
   priority: string;
   tags: Tag[];
   users: User[];
@@ -26,7 +27,7 @@ export interface SprintItem {
 
 export type SprintItems = SprintItem[];
 
-type Tag = 'Live' | 'Need Help' | 'Rippling';
+export type Tag = 'Live' | 'Need Help' | 'Rippling';
 
 /* eslint-disable no-unused-vars */
 export type TaskOverview = {
