@@ -283,7 +283,7 @@ const BoardSectionList = () => {
         onDragOver={handleDragOver}
         onDragEnd={handleDragEnd}
       >
-        <Box className='flex justify-around'>
+        <Box className='flex justify-around md:gap-8 xl:gap-8 '>
           {Object.keys(boardSections).map((boardSectionKey) => (
             <Box key={boardSectionKey}>
               <BoardSection

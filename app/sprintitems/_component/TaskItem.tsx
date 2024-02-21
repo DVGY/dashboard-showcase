@@ -32,7 +32,7 @@ const TaskItem = ({ task }: TaskItemProps) => {
   }`;
 
   return (
-    <Card>
+    <Card className='md:max-w-[300px] xl:max-w-[300px] 2xl:max-w-[100%]'>
       <CardHeader className='items-start'>
         <Box className='flex justify-around'>
           <Badge variant='outline' className='items-center'>
