@@ -1,5 +1,5 @@
 import { UserAvatars } from '@/app/dashboard/_component/UserAvatars';
-import { Projects } from '@/app/dashboard/types';
+import { Projects } from '@/types/resourceResponses';
 import { Badge } from '@/components/ui/badge';
 import { Box } from '@/components/ui/box';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';

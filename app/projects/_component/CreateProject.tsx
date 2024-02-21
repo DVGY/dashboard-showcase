@@ -1,4 +1,4 @@
-import { Project, Users } from '@/app/dashboard/types';
+import { Project, Users } from '@/types/resourceResponses';
 import { queryClient } from '@/app/queryClient';
 import { Avatar, AvatarImage } from '@/components/ui/avatar';
 import { Box } from '@/components/ui/box';

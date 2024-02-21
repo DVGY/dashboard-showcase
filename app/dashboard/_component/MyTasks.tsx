@@ -11,7 +11,7 @@ import {
 } from '@/components/ui/table';
 
 import { Badge } from '@/components/ui/badge';
-import { Priority, Tasks } from '../types';
+import { Priority, Tasks } from '@/types/resourceResponses';
 import { UserAvatars } from './UserAvatars';
 import { baseApiURL } from '@/config/envs';
 
