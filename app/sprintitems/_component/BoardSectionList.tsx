@@ -209,6 +209,8 @@ const BoardSectionList = () => {
     return <Loader />;
   }
 
+  console.log({ boardSections });
+
   return (
     <Container>
       <Box className='flex gap-6 flex-col mb-4 p-4'>
@@ -233,10 +235,10 @@ const BoardSectionList = () => {
             <FancyMultiSelect
               placeholder='Select Type'
               options={[
-                { id: 'all', value: 'all', label: 'All' },
-                { id: 'task', value: 'task', label: 'Task' },
-                { id: 'bug', value: 'bug', label: 'Bug' },
-                { id: 'feature', value: 'feature', label: 'Feature' },
+                { id: 'All', value: 'All', label: 'All' },
+                { id: 'Task', value: 'Task', label: 'Task' },
+                { id: 'Bug', value: 'Bug', label: 'Bug' },
+                { id: 'Feature', value: 'Feature', label: 'Feature' },
               ]}
               // select={[{ id: 'all', value: 'all', label: 'All' }]}
               // onSelect={setSelect}

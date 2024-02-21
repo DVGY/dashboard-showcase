@@ -198,9 +198,9 @@ export const EditSprintItemForm = ({
             <SelectContent>
               <SelectGroup>
                 <SelectLabel>Type</SelectLabel>
-                <SelectItem value='task'>Task</SelectItem>
-                <SelectItem value='bug'>Bug</SelectItem>
-                <SelectItem value='feature'>Feature</SelectItem>
+                <SelectItem value='Task'>Task</SelectItem>
+                <SelectItem value='Bug'>Bug</SelectItem>
+                <SelectItem value='Feature'>Feature</SelectItem>
               </SelectGroup>
             </SelectContent>
           </Select>
@@ -294,6 +294,7 @@ export const EditSprintItemForm = ({
                   updated_at: new Date().toISOString(),
                   priority,
                   tags: tags.map((e) => e.id) as Tag[],
+                  //@ts-ignore
                   users: select?.map(({ id, name, avatar }) => ({
                     id,
                     name,

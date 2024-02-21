@@ -7,15 +7,17 @@ import {
 } from '@/types/resourceResponses';
 
 export const BOARD_SECTIONS = {
-  todo: 'todo',
-  'in progress': 'in progress',
-  complete: 'complete',
+  Todo: 'Todo',
+  'In progress': 'In progress',
+  Complete: 'Complete',
 };
 
 export const initializeBoard = (sprintItems: SprintItems) => {
   const boardSections: BoardSections = {};
 
   Object.keys(BOARD_SECTIONS).forEach((boardSectionKey) => {
+    console.log({ boardSectionKey });
+
     boardSections[boardSectionKey] = getTasksByStatus(
       sprintItems,
       boardSectionKey as Status

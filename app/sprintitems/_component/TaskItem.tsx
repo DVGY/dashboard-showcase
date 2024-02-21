@@ -38,9 +38,9 @@ const TaskItem = ({ task }: TaskItemProps) => {
           <Badge variant='outline' className='items-center'>
             <p
               className={`text-2xl ${
-                task.task_type === 'feature' ? 'text-sky-500' : ''
-              } ${task.task_type === 'task' ? 'text-yellow-500' : ''}  ${
-                task.task_type === 'bug' ? 'text-red-500' : ''
+                task.task_type === 'Feature' ? 'text-sky-500' : ''
+              } ${task.task_type === 'Task' ? 'text-yellow-500' : ''}  ${
+                task.task_type === 'Bug' ? 'text-red-500' : ''
               }`}
             >
               &#x2022;&nbsp;

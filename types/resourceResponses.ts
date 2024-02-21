@@ -1,4 +1,4 @@
-export type Status = 'todo' | 'in progress' | 'complete';
+export type Status = 'Todo' | 'In progress' | 'Complete';
 
 export type BoardSections = {
   [name: string]: SprintItems;
@@ -6,7 +6,7 @@ export type BoardSections = {
 
 type UserDefinedStatus = string;
 type UserDefinedTaskType = string;
-type TaskType = 'task' | 'feature' | 'bug';
+type TaskType = 'Task' | 'Feature' | 'Bug';
 type DateFm = string;
 
 export interface SprintItem {
