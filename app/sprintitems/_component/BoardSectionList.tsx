@@ -209,8 +209,6 @@ const BoardSectionList = () => {
     return <Loader />;
   }
 
-  console.log({ boardSections });
-
   return (
     <Container>
       <Box className='flex gap-6 flex-col mb-4 p-4'>

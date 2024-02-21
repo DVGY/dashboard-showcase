@@ -135,8 +135,6 @@ const BoardSection = ({ id, title, tasks }: BoardSectionProps) => {
     }));
   };
 
-  console.log(isOpen, sprintItem);
-
   return (
     <Box className=' bg-slate-100 p-2'>
       <Box className='flex justify-between'>

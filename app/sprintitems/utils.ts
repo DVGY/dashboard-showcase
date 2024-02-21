@@ -16,8 +16,6 @@ export const initializeBoard = (sprintItems: SprintItems) => {
   const boardSections: BoardSections = {};
 
   Object.keys(BOARD_SECTIONS).forEach((boardSectionKey) => {
-    console.log({ boardSectionKey });
-
     boardSections[boardSectionKey] = getTasksByStatus(
       sprintItems,
       boardSectionKey as Status
