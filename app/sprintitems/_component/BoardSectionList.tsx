@@ -36,6 +36,7 @@ import { PlusCircleIcon, SettingsIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import { baseApiURL } from '@/config/envs';
+import { useMediaQuery } from '@/hooks/useMediaQuery';
 
 const Container = Box;
 
@@ -53,6 +54,7 @@ const updateSprintItems = async (data: SprintItem) => {
 };
 
 const BoardSectionList = () => {
+  const isMobile = useMediaQuery('(max-width: 1023px)');
   const [boardSections, setBoardSections] = useState<BoardSectionsType | null>(
     null
   );
@@ -212,6 +214,12 @@ const BoardSectionList = () => {
   return (
     <Container>
       <Box className='flex gap-6 flex-col mb-4 p-4'>
+        {isMobile ? (
+          <p className='text-yellow-300 font-medium'>
+            Mobile Screen !!! This page is better viewed in Desktop Some feature
+            might not work !!{' '}
+          </p>
+        ) : null}
         <Box className='flex justify-between'>
           <h1 className=' text-lg font-semibold'>RND Team Sprint 2</h1>
           <Box className='flex gap-4 justify-center items-center'>
